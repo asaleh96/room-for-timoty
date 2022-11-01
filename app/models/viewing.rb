@@ -1,4 +1,4 @@
 class Viewing < ApplicationRecord
-  belongs_to :flat_id
-  belongs_to :user_id
+  belongs_to :flat
+  belongs_to :user
 end
