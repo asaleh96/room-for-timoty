@@ -12,12 +12,12 @@ class FlatsController < ApplicationController
   end
 
   def create
-    @flat = Flat.new(flat_params)
-    @flat.save
-    # redirect_to flat_path(@flat)
+    params = flat_params
+    params[:user] = User.first
+    @flat = Flat.new(params)
+    @flat.save!
+    redirect_to flats_path
   end
-
-
 
   def edit
     @flat = Flat.find(params[:id])
@@ -38,6 +38,6 @@ class FlatsController < ApplicationController
   private
 
   def flat_params
-    params.require(:flat).permit(:title, :description, :address, :rent)
+    params.require(:flat).permit(:title, :description, :address, :rent, :user)
   end
 end
