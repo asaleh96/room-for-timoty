@@ -1,0 +1,17 @@
+<h1>Hello from the View "Show" HTML</h1>
+
+<h2><%= "More details about #{@flat.title}" %></h2>
+
+<h2><%= @flat.title %></h2>
+<p><%= @flat.address %></p>
+<p><%= @flat.description %></p>
+<p><%= @flat.picture %></p>
+<p><%= @flat.rent %></p>
+
+
+<%= link_to "Delete",
+  flat_path(@flat),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
+
+<%= link_to 'See all flats', flats_path %>
