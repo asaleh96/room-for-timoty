@@ -8,7 +8,7 @@
 <p><%= @flat.picture %></p>
 <p><%= @flat.rent %></p>
 
-
+<%= link_to "Update Ad", edit_flat_path  %>
 <%= link_to "Delete",
   flat_path(@flat),
   data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}

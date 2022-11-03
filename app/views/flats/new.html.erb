@@ -2,14 +2,6 @@
 
 <h1>Post Ad</h1>
 
-<%= form_with model: @flat do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :address %>
-  <%= f.text_field :address %>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <%= f.label :rent %>
-  <%= f.number_field :rent %>
-  <%= f.submit %>
-<% end %>
+<div>
+<%= render "form", flat: @flat %>
+</div>

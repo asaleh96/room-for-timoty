@@ -1,6 +1,3 @@
-
-<h1>Post Ad</h1>
-
 <%= form_with model: @flat do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
@@ -14,3 +11,4 @@
   <%= f.number_field :pictures %>
   <%= f.submit %>
 <% end %>
+<%= link_to 'View all flats', flats_path %>
