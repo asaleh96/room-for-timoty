@@ -7,4 +7,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true, uniqueness: { scope: :last_name }
   validates :last_name, presence: true
   validates :intrests, inclusion: { in: INTERESTS }
+
+  has_many :viewings
+  has_many :flats
 end
