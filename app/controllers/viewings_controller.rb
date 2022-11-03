@@ -1,0 +1,2 @@
+class ViewingsController < ApplicationController
+end
