@@ -1,0 +1,35 @@
+.card-owner {
+  overflow: hidden;
+  height: 120px;
+  display: flex;
+  align-items: center;
+}
+
+.card-owner img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.card-owner h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-owner p {
+  font-size: 16px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-owner .card-owner-infos {
+  padding: 16px;
+}
+
+.strong {
+  font-weight: bold;
+}
