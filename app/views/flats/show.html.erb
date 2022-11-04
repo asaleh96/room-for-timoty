@@ -2,33 +2,36 @@
   <h1 style="padding: 10px 0px; text-align: center"><%= "Welcome to #{@flat.title}!" %></h1>
 
 
-    <div style="text-align: center; padding: 20px;">
+  <div style="text-align: center; padding: 20px;">
     <%= link_to "Update Ad", edit_flat_path, class: 'secondary-btn' %>
     <%= link_to "Delete Ad",
       flat_path(@flat), class: 'secondary-btn',
       data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-    %>
-    </div>
+      %>
+  </div>
 
+  <%= image_tag 'flat-placeholder', class: 'image-flat',  alt: "image placeholder for flat" %>
 
-    <%= image_tag 'flat-placeholder', class: 'image-flat',  alt: "image placeholder for flat" %>
-    <div class="flat-content">
+  <div class="flat-content">
     <p><%= @flat.description %></p>
     <p>Address: <%= @flat.address %></p>
+    <p>City: <%= @flat.city %></p>
     <p>Rent:<%= @flat.rent %>€/pm (utilities included)</p>
-
   </div>
 
   <div class="owner-details">
-  <h2>About the Owner</h2>
-  <p><%= @flat.user.first_name %></p>
-
+    <h3>About the Owner: <%= @flat.user.first_name %> <%= @flat.user.last_name %></h3>
+    <p><%= @flat.user.first_name %> lives in <%= @flat.city %> and enjoys <%= @flat.user.interests %>.
+    Book a viewing to find out more about the flat and your future flatmate!</p>
   </div>
 
-  <div class="btn-flat">
-  <%= link_to  "Book a Viewing", '#' %>
-  </div>
+   <div style="text-align: center;">
+      <%= link_to  "Book a Viewing", '#', class: 'btn-flat' %>
+    </div>
 
-  <%= link_to 'Back to all flats', flats_path %>
+  <div style="text-align: center; padding: 40px;">
+  <p>Not what you were looking for?</p>
+    <%= link_to 'Get back to flats', flats_path, class: 'secondary-btn' %>
+  </div>
 
 </div>
