@@ -1,17 +1,19 @@
-<div>
-  <h1>All available flats</h1>
+<div style="text-align: center;">
+  <h1>Discover our flats</h1>
 </div>
 
-<div>
-  <ul>
+  <div class="flat-index-content">
     <% @flats.each do |flat| %>
-      <li><%= link_to flat.title, flat_path(flat) %></li>
-      <li><%= flat.description %></li>
-      <li><%= flat.rent %></li>
-    <% end %>
-</ul>
-</div>
+      <%= link_to flat_path(flat) do  %>
+        <div class="flat-card-index">
+          <%= image_tag 'flat-placeholder', class: 'image-flat-cover',  alt: "image placeholder for flat" %>
 
-<div>
-  <%= link_to 'Post my Ad', new_flat_path %>
-</div>
+          <div class="flat-card-content">
+            <p><%= flat.title %></p>
+            <p><%= flat.rent %> €/pm</p>
+
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
