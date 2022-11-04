@@ -1,17 +1,34 @@
-<h1>Hello from the View "Show" HTML</h1>
+<div class="container show-flat-content">
+  <h1 style="padding: 10px 0px; text-align: center"><%= "Welcome to #{@flat.title}!" %></h1>
 
-<h2><%= "More details about #{@flat.title}" %></h2>
 
-<h2><%= @flat.title %></h2>
-<p><%= @flat.address %></p>
-<p><%= @flat.description %></p>
-<p><%= @flat.picture %></p>
-<p><%= @flat.rent %></p>
+    <div style="text-align: center; padding: 20px;">
+    <%= link_to "Update Ad", edit_flat_path, class: 'secondary-btn' %>
+    <%= link_to "Delete Ad",
+      flat_path(@flat), class: 'secondary-btn',
+      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+    %>
+    </div>
 
-<%= link_to "Update Ad", edit_flat_path  %>
-<%= link_to "Delete",
-  flat_path(@flat),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%>
 
-<%= link_to 'See all flats', flats_path %>
+    <%= image_tag 'flat-placeholder', class: 'image-flat',  alt: "image placeholder for flat" %>
+    <div class="flat-content">
+    <p><%= @flat.description %></p>
+    <p>Address: <%= @flat.address %></p>
+    <p>Rent:<%= @flat.rent %>€/pm (utilities included)</p>
+
+  </div>
+
+  <div class="owner-details">
+  <h2>About the Owner</h2>
+  <p><%= @flat.user.first_name %></p>
+
+  </div>
+
+  <div class="btn-flat">
+  <%= link_to  "Book a Viewing", '#' %>
+  </div>
+
+  <%= link_to 'Back to all flats', flats_path %>
+
+</div>
