@@ -1,0 +1,44 @@
+
+.flat-index-content{
+  padding: 30px 30px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+  p{
+    padding: 0;
+    margin: 0;
+  }
+  a{
+    text-decoration: none;
+    color: black;
+  }
+}
+
+.flat-card-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  height: 30%;
+  flex-direction: column;
+  padding: 10px 20px;
+}
+
+
+
+.flat-card-index {
+    width: 300px;
+    height: 200px;
+    border: 1px solid #80808042;
+    border-radius: 7px;
+    box-shadow: 0px 0px 12px 2px #00000021;
+
+  img {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+  }
+
+
+}
