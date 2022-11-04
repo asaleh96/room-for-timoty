@@ -1,0 +1,17 @@
+<div>
+  <h1>All available flats</h1>
+</div>
+
+<div>
+  <ul>
+    <% @flats.each do |flat| %>
+      <li><%= link_to flat.title, flat_path(flat) %></li>
+      <li><%= flat.description %></li>
+      <li><%= flat.rent %></li>
+    <% end %>
+</ul>
+</div>
+
+<div>
+  <%= link_to 'Post my Ad', new_flat_path %>
+</div>
