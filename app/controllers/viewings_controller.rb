@@ -5,14 +5,15 @@ def index
 end
 
 def new
-  @flat = Flat.find(params[flat:id])
+  @flat = Flat.find(params[:id])
   @viewing = Viewing.new
 end
 
 def create
-    @viewing = Viewing.new(viewing_params)
-    @viewing.flat = @flat
-    @viewing.save
+  @flat = Flat.find(params[:flat_id])
+  @viewing = Viewing.new(viewing_params)
+  @viewing.flat = @flat
+  @viewing.save
 end
 
 def show
