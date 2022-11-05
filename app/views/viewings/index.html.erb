@@ -1,0 +1,12 @@
+<div>
+    <% @viewings.each do |viewing| %>
+    <% if current_user == viewing.user %>
+    <div class="container", style="padding-bottom: 20px;">
+            <p> <%= viewing.flat.title %>
+            <p>Address: <%= viewing.flat.address %>, <%= viewing.flat.city %>
+            <p>Date: <%= viewing.date %></p>
+            <p><%= viewing.user.first_name %> will be meeting you there!</p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
