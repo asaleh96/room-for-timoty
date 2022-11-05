@@ -1,14 +1,12 @@
-<%= form_with model: @flat do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :city %>
-  <%= f.text_field :city %>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <%= f.label :rent %>
-  <%= f.number_field :rent %>
-  <%= f.label :pictures %>
-  <%= f.number_field :pictures %>
-  <%= f.submit %>
+<div style="width: 60%; margin: 20px auto;">
+<%= simple_form_for(@flat) do |f| %>
+  <%= f.input :title %>
+  <%= f.input :address %>
+  <%= f.input :city %>
+  <%# <%= f.input :picture %>
+  <%= f.input :description %>
+  <%= f.input :rent %>
+   <%= f.input :available_from %>
+  <%= f.submit class: "btn btn-flat" %>
 <% end %>
-<%= link_to 'View all flats', flats_path %>
+</div>
