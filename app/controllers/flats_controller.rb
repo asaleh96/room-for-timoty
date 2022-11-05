@@ -1,5 +1,4 @@
 class FlatsController < ApplicationController
-  before_action :set_flat, only: %i[new create]
 
   def index
     @flats = Flat.all
