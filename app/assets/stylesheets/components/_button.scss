@@ -2,11 +2,27 @@
   color: white;
   padding: 8px 24px;
   border-radius: 4px;
-  background: #670BFF;
-  transition: background 0.3s ease;
+  background: darkblue;
+  text-align: center;
+  text-decoration: none;
 }
 
 .btn-flat:hover {
-  background: #4D04C4;
+  background: #353B57;
   color: white;
+}
+
+.secondary-btn {
+    color: #4A4A4A;
+    border: 1px solid #4A4A4A;
+    padding: 8px 24px;
+    border-radius: 5px;
+    font-weight: lighter;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+    text-decoration: none;
+  }
+
+  .secondary-btn:hover {
+    opacity: 1;
 }

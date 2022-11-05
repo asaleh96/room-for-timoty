@@ -1,17 +1,46 @@
-<h1>Hello from the View "Show" HTML</h1>
+<div class="container show-flat-content">
+  <h1 style="padding: 10px 0px; text-align: center"><%= "Welcome to #{@flat.title}!" %></h1>
 
-<h2><%= "More details about #{@flat.title}" %></h2>
 
-<h2><%= @flat.title %></h2>
-<p><%= @flat.address %></p>
-<p><%= @flat.description %></p>
-<p><%= @flat.picture %></p>
-<p><%= @flat.rent %></p>
+  <div style="text-align: center; padding: 20px;">
+    <%= link_to "Update Ad", edit_flat_path, class: 'secondary-btn' %>
+    <%= link_to "Delete Ad",
+      flat_path(@flat), class: 'secondary-btn',
+      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+      %>
+  </div>
 
-<%= link_to "Update Ad", edit_flat_path  %>
-<%= link_to "Delete",
-  flat_path(@flat),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%>
+  <%= image_tag 'flat-placeholder', class: 'image-flat',  alt: "image placeholder for flat" %>
 
-<%= link_to 'See all flats', flats_path %>
+  <div class="flat-content">
+    <p><span class="strong"><%= @flat.title %></span> is a <%= @flat.description.downcase %> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    <p> <span class="strong">Address: </span> <%= @flat.address %> (<%= @flat.city %>)</p>
+    <p><span class="strong">Rent:</span> <%= @flat.rent %>€/pm (utilities included)</p>
+    <div style="text-align: center;">
+      <%= link_to  "Book a Viewing", '#', class: 'btn-flat' %>
+    </div>
+  </div>
+
+
+
+
+  <div class="owner-details card-owner">
+    <%= image_tag 'user-placeholder', class: 'card-owner img',  alt: "image placeholder for user" %>
+    <div class="card-owner-infos">
+    <h2>This property is owned by <%= @flat.user.first_name %> <%= @flat.user.last_name %></h2>
+    <p><%= @flat.user.first_name %> lives in <%= @flat.city %> and enjoys <%= @flat.user.interests %>.
+    </p>
+    </div>
+  </div>
+
+
+
+  <div style="text-align: center; padding: 40px;">
+  <p>Not what you were looking for?</p>
+    <%= link_to 'Get back to flats', flats_path, class: 'secondary-btn' %>
+  </div>
+
+</div>
