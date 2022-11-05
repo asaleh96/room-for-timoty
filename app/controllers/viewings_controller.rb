@@ -3,10 +3,11 @@ class ViewingsController < ApplicationController
 def index
     @viewings = Viewing.all
 end
-# def new
-#   @flat = Flat.find(params[flat:id])
-#   @viewing = Viewing.new
-# end
+
+def new
+  @flat = Flat.find(params[flat:id])
+  @viewing = Viewing.new
+end
 
 def create
     @viewing = Viewing.new(viewing_params)
