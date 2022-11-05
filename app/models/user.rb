@@ -4,9 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   INTERESTS = ["Cooking", "Sports", "Party", "Training", "Outdoors"]
-  validates :first_name, presence: true, uniqueness: { scope: :last_name }
-  validates :last_name, presence: true
-  validates :interests, inclusion: { in: INTERESTS }
+  # validates :first_name, presence: true, uniqueness: { scope: :last_name }
+  # validates :last_name, presence: true
+  # validates :interests, inclusion: { in: INTERESTS }
 
   has_many :viewings
   has_many :flats, dependent: :destroy
