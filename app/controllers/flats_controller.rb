@@ -13,7 +13,7 @@ class FlatsController < ApplicationController
 
   def create
     params = flat_params
-    params[:user] = User.first
+    params[:user] = current_user
     @flat = Flat.new(params)
     @flat.save!
     redirect_to flats_path
