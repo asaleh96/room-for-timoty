@@ -1,14 +1,19 @@
 <div class="container show-flat-content">
   <h1 style="padding: 10px 0px; text-align: center"><%= "Welcome to #{@flat.title}!" %></h1>
 
-
+<% if @owner %>
   <div style="text-align: center; padding: 20px;">
     <%= link_to "Update Ad", edit_flat_path, class: 'secondary-btn' %>
     <%= link_to "Delete Ad",
-      flat_path(@flat), class: 'secondary-btn',
-      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-      %>
+    flat_path(@flat), class: 'secondary-btn',
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+    %>
   </div>
+<% else %>
+  <div style="text-align: center; padding: 20px;">
+    <%= link_to "Book a viewing", "#", class: 'secondary-btn' %>
+  </div>
+<% end %>
 
   <%= image_tag 'flat-placeholder', class: 'image-flat',  alt: "image placeholder for flat" %>
 

@@ -1,0 +1,8 @@
+<%= form_with model: @viewing do |f| %>
+  <%= f.label :date %>
+  <%= f.text_field :date %>
+  <%= f.label :message %>
+  <%= f.text_field :message %>
+  <%= f.submit %>
+<% end %>
+<%= link_to 'View all flats', flats_path %>

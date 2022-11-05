@@ -5,6 +5,7 @@ class FlatsController < ApplicationController
 
   def show
     @flat = Flat.find(params[:id])
+    @owner = owner?(@flat)
   end
 
   def new
@@ -39,5 +40,9 @@ class FlatsController < ApplicationController
 
   def flat_params
     params.require(:flat).permit(:title, :description, :address, :rent, :user, :city)
+  end
+
+  def owner?(flat)
+    current_user.id == flat.user_id
   end
 end
