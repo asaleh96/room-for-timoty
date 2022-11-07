@@ -1,12 +1,16 @@
-<div>
-    <% @viewings.each do |viewing| %>
+<div class="container" style="width: 70%">
+<h1 style="text-align: center; padding: 10px 0;"> My Viewings </h1>
+  <% @viewings.each do |viewing| %>
     <% if current_user == viewing.user %>
-    <div class="container", style="padding-bottom: 20px;">
-            <p> <%= viewing.flat.title %>
-            <p>Address: <%= viewing.flat.address %>, <%= viewing.flat.city %>
-            <p>Date: <%= viewing.date %></p>
-            <p><%= viewing.user.first_name %> will be meeting you there!</p>
-        <% end %>
+      <div class="notification">
+        <%= image_tag 'flat-placeholder', class: 'rounded-3', style: 'width: 150px;',  alt: "image placeholder for flat" %>
+          <div class="notification-content">
+                  <p style="font-weight: bold;"> <small> <%= viewing.date.strftime("%A, %d %B %Y at %H:%M") %> </small></p>
+                  <p> You are viewing <span style="font-weight:bold;"><%= viewing.flat.title %> </span> </p>
+                  <p><%= viewing.flat.address %>, <%= viewing.flat.city %></p>
+                  <p><%= viewing.user.first_name %> will be meeting you there!</p>
+          </div>
       </div>
-    <% end %>
-  </div>
+      <% end %>
+  <% end %>
+</div>
