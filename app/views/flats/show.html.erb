@@ -14,20 +14,31 @@
   <%= image_tag 'flat-placeholder', class: 'image-flat',  alt: "image placeholder for flat" %>
 
   <div class="flat-content">
-    <p><span class="strong"><%= @flat.title %></span> is a <%= @flat.description.downcase %> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    <p><%= @flat.description%> </p>
     <p> <span class="strong">Address: </span> <%= @flat.address %> (<%= @flat.city %>)</p>
-    <p><span class="strong">Rent:</span> <%= @flat.rent %>€/pm (utilities included)</p>
+    <p><span class="strong">Rent:</span> <%= @flat.rent %></p>
+    <p><span class="strong">Available from</span> <%= @flat.available_from.strftime("%A, %d %B %Y") %> </p>
   </div>
 
-<% if !@owner %>
+<% if !@owner && user_signed_in? %>
   <div style="text-align: center; padding: 20px;">
     <%= link_to "Book a viewing", new_flat_viewing_path(@flat), class: 'btn btn-flat' %>
   </div>
+
+<% elsif !@owner %>
+<div style="text-align: center; padding: 40px;">
+  Sign up for free or login to book a viewing
+  <div style= "padding: 20px;">
+    <%= link_to "Sign up for Free", new_user_registration_path, class: "btn btn-flat" %>
+    <%= link_to "Login", user_session_path, class: 'btn btn-flat' %>
+    </div>
+    <div style= "padding: 20px; ">
+    <%= link_to 'Get back to flats', flats_path, class: 'secondary-btn'%>
+  </div>
+  </div>
 <% end %>
 
+<% if user_signed_in? %>
   <div class="owner-details card-owner">
     <%= image_tag 'user-placeholder', class: 'card-owner img',  alt: "image placeholder for user" %>
     <div class="card-owner-infos">
@@ -39,9 +50,12 @@
 
 
 
+
   <div style="text-align: center; padding: 40px;">
   <p>Not what you were looking for?</p>
     <%= link_to 'Get back to flats', flats_path, class: 'secondary-btn' %>
   </div>
+
+  <% end %>
 
 </div>

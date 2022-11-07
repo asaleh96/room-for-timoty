@@ -2,7 +2,7 @@ class ViewingsController < ApplicationController
   before_action :set_flat, only: %i[new create]
 
   def index
-    @viewings = Viewing.all
+    @viewings = Viewing.all.order('date ASC')
   end
 
   def new
