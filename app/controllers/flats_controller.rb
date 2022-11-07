@@ -1,6 +1,7 @@
 class FlatsController < ApplicationController
+
   def index
-      @flats = Flat.all
+    @flats = Flat.all
   end
 
   def show
@@ -40,6 +41,10 @@ class FlatsController < ApplicationController
 
   def flat_params
     params.require(:flat).permit(:title, :description, :address, :rent, :user, :city)
+  end
+
+  def set_flat
+    @flat = Flat.find(params[:id])
   end
 
   def owner?(flat)

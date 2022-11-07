@@ -1,8 +1,8 @@
-<%= form_with model: @viewing do |f| %>
-  <%= f.label :date %>
-  <%= f.text_field :date %>
-  <%= f.label :message %>
-  <%= f.text_field :message %>
-  <%= f.submit %>
+
+<div style="width: 60%; margin: 20px auto;">
+<h1>Book a Viewing </h1>
+<%= simple_form_for [@flat, @viewing] do |f| %>
+  <%= f.input :date %>
+  <%= f.input :message %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
-<%= link_to 'View all flats', flats_path %>

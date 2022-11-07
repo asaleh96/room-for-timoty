@@ -1,28 +1,36 @@
 class ViewingsController < ApplicationController
+  before_action :set_flat, only: %i[new create]
 
-def index
+  def index
     @viewings = Viewing.all
-end
+  end
 
-def new
-  @flat = Flat.find(params[:id])
-  @viewing = Viewing.new
-end
+  def new
+    @viewing = Viewing.new
+  end
 
-def create
-  @flat = Flat.find(params[:flat_id])
-  @viewing = Viewing.new(viewing_params)
-  @viewing.flat = @flat
-  @viewing.save
-end
+  def create
+    @viewing = Viewing.new(viewing_params)
+    @viewing.flat = @flat
+    @viewing.user = current_user
+    @viewing.save!
+    redirect_to flat_path(@flat)
+  end
 
-def show
-    @viewing = Flat.find(viewing_params)
-end
+  def destroy
+    @viewing = Viewing.find(params[:id])
+    @viewing.destroy
+    redirect_to flat_path(@viewing.flat), status: :see_other
+  end
 
-private
+  private
 
-def viewing_params
-    params.require(:viewing).permit(:content)
-end
+
+  def set_flat
+    @flat = Flat.find(params[:flat_id])
+  end
+
+  def viewing_params
+    params.require(:viewing).permit(:date, :message)
+  end
 end
