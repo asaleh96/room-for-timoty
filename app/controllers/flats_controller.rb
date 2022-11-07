@@ -48,6 +48,8 @@ class FlatsController < ApplicationController
   end
 
   def owner?(flat)
+    if user_signed_in?
     current_user.id == flat.user_id
+    end
   end
 end

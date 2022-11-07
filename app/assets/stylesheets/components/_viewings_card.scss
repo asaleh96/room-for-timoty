@@ -5,6 +5,7 @@
   background: white;
   padding: 8px 16px;
   border: 1px solid rgb(235,235,235);
+  text-decoration: none;
 }
 
 .notification .notification-content {
@@ -35,8 +36,20 @@
   color: #999999;
   margin-left: 16px;
   font-size: 14px;
+  text-decoration: none !important;
 }
 
 .notification .notification-actions a:hover {
   color: #555555;
+  text-decoration: none;
+}
+
+.flat-link {
+  text-decoration: none;
+  color: black;
+}
+
+.flat-link:hover {
+  text-decoration: none;
+  color: black;
 }

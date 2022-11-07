@@ -2,6 +2,7 @@
 <h1 style="text-align: center; padding: 20px 0;"> My Viewings </h1>
   <% @viewings.each do |viewing| %>
     <% if current_user == viewing.user %>
+    <%= link_to flat_path(viewing.flat), class: "flat-link" do  %>
       <div class="notification">
         <%= image_tag 'flat-placeholder', class: 'rounded-3', style: 'width: 150px;',  alt: "image placeholder for flat" %>
           <div class="notification-content">
@@ -12,6 +13,7 @@
           </div>
       </div>
       <% end %>
+  <% end %>
   <% end %>
   <div style="text-align: center; padding: 20px;">
     <%= link_to 'Get back to flats', flats_path, class: 'secondary-btn' %>
