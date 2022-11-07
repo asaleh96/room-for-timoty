@@ -18,7 +18,7 @@ class FlatsController < ApplicationController
     params[:user] = current_user
     @flat = Flat.new(params)
     @flat.save!
-    redirect_to flats_path
+    redirect_to flat_path(@flat)
   end
 
   def edit

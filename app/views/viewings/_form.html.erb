@@ -1,8 +1,12 @@
 
 <div style="width: 60%; margin: 20px auto;">
-<h1>Book a Viewing </h1>
+<h1 style="text-align: center">Book a Viewing for  <%= @flat.title %></h1>
+<div style="padding: 20px 0;">
 <%= simple_form_for [@flat, @viewing] do |f| %>
-  <%= f.input :date %>
+  <%= f.input :date, :order => [:day, :month, :year] %>
   <%= f.input :message %>
-  <%= f.submit "Submit", class: "btn btn-primary" %>
+<div style="text-align: center;">
+  <%= f.submit "Submit", class: 'btn btn-flat' %>
+</div>
+</div>
 <% end %>

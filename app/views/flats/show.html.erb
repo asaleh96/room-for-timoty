@@ -9,10 +9,6 @@
     data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
     %>
   </div>
-<% else %>
-  <div style="text-align: center; padding: 20px;">
-    <%= link_to "Book a viewing", new_flat_viewing_path(@flat), class: 'secondary-btn' %>
-  </div>
 <% end %>
 
   <%= image_tag 'flat-placeholder', class: 'image-flat',  alt: "image placeholder for flat" %>
@@ -26,8 +22,11 @@
     <p><span class="strong">Rent:</span> <%= @flat.rent %>€/pm (utilities included)</p>
   </div>
 
-
-
+<% if !@owner %>
+  <div style="text-align: center; padding: 20px;">
+    <%= link_to "Book a viewing", new_flat_viewing_path(@flat), class: 'btn btn-flat' %>
+  </div>
+<% end %>
 
   <div class="owner-details card-owner">
     <%= image_tag 'user-placeholder', class: 'card-owner img',  alt: "image placeholder for user" %>
