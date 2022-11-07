@@ -14,7 +14,7 @@ class ViewingsController < ApplicationController
     @viewing.flat = @flat
     @viewing.user = current_user
     @viewing.save!
-    redirect_to flat_path(@flat)
+    redirect_to viewings_path
   end
 
   def destroy

@@ -6,7 +6,9 @@
   <%# <%= f.input :picture %>
   <%= f.input :description %>
   <%= f.input :rent %>
-   <%= f.input :available_from %>
+  <%= f.input :available_from, :order => [:day, :month, :year] %>
+  <div style="text-align: center;">
   <%= f.submit class: "btn btn-flat" %>
+  </div>
 <% end %>
 </div>
