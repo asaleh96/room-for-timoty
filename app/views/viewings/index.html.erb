@@ -1,5 +1,5 @@
 <div class="container" style="width: 70%">
-<h1 style="text-align: center; padding: 10px 0;"> My Viewings </h1>
+<h1 style="text-align: center; padding: 20px 0;"> My Viewings </h1>
   <% @viewings.each do |viewing| %>
     <% if current_user == viewing.user %>
       <div class="notification">
@@ -13,4 +13,7 @@
       </div>
       <% end %>
   <% end %>
+  <div style="text-align: center; padding: 20px;">
+    <%= link_to 'Get back to flats', flats_path, class: 'secondary-btn' %>
+  </div>
 </div>
