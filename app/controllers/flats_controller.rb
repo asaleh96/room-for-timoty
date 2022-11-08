@@ -5,7 +5,14 @@ class FlatsController < ApplicationController
     @flats = Flat.search_by_city(params[:query])
    else
     @flats = Flat.all
-   end
+    @markers = @flats.geocoded.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {flat: flat})
+      }
+    end
+  end
   end
 
   def show
