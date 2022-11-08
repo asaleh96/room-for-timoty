@@ -2,6 +2,18 @@
   <h1>Discover our flats</h1>
 </div>
 
+
+<div class="flat-index-content">
+  <%= form_with url: flats_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Next destination is ..."
+    %>
+    <%= submit_tag "Search", class: "btn btn-flat" %>
+  <% end %>
+</div>
+
 <div style=" height: 300px; padding: 30px auto; margin: 0px auto;",
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"

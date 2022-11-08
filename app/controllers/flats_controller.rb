@@ -1,15 +1,18 @@
 class FlatsController < ApplicationController
 
   def index
+   if params[:query].present?
+    @flats = Flat.search_by_city(params[:query])
+   else
     @flats = Flat.all
-      # The `geocoded` scope filters only flats with coordinates
-      @markers = @flats.geocoded.map do |flat|
-        {
-          lat: flat.latitude,
-          lng: flat.longitude,
-          info_window: render_to_string(partial: "info_window", locals: {flat: flat})
-        }
+    @markers = @flats.geocoded.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {flat: flat})
+      }
     end
+  end
   end
 
   def show
