@@ -1,7 +1,11 @@
 class FlatsController < ApplicationController
 
   def index
+   if params[:query].present?
+    @flats = Flat.search_by_city(params[:query])
+   else
     @flats = Flat.all
+   end
   end
 
   def show
