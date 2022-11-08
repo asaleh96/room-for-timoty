@@ -1,6 +1,12 @@
-<div style="text-align: center;">
+<div style="text-align: center;" class="content, container";>
   <h1>Discover our flats</h1>
 </div>
+
+<div style=" height: 300px; padding: 30px auto; margin: 0px auto;",
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 
   <div class="flat-index-content">
     <% @flats.each do |flat| %>
@@ -17,3 +23,5 @@
       <% end %>
     <% end %>
   </div>
+
+</div>
