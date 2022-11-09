@@ -13,7 +13,6 @@
   <%# <% end %>
 <%# </div>  %>
 
-
   <% @viewings.each do |viewing| %>
     <% if current_user == viewing.user %>
     <%= link_to flat_path(viewing.flat), class: "flat-link" do  %>
