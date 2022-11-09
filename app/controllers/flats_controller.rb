@@ -1,25 +1,24 @@
 class FlatsController < ApplicationController
-
   def index
-   if params[:query].present?
-    @flats = Flat.search_by_city(params[:query])
-    @markers = @flats.geocoded.map do |flat|
-      {
+    if params[:query].present?
+      @flats = Flat.search_by_city(params[:query])
+      @markers = @flats.geocoded.map do |flat|
+        {
         lat: flat.latitude,
         lng: flat.longitude,
-        info_window: render_to_string(partial: "info_window", locals: {flat: flat})
+        info_window: render_to_string(partial: 'info_window', locals: {flat: flat})
       }
+      end
+    else
+      @flats = Flat.all
+        @markers = @flats.geocoded.map do |flat|
+          {
+            lat: flat.latitude,
+            lng: flat.longitude,
+            info_window: render_to_string(partial: 'info_window', locals: {flat: flat})
+          }
+        end
     end
-   else
-    @flats = Flat.all
-    @markers = @flats.geocoded.map do |flat|
-      {
-        lat: flat.latitude,
-        lng: flat.longitude,
-        info_window: render_to_string(partial: "info_window", locals: {flat: flat})
-      }
-    end
-  end
   end
 
   def show

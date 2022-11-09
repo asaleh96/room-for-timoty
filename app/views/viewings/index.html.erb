@@ -2,15 +2,17 @@
 
 <h1 style="text-align: center; padding: 20px 0;"> My Viewings </h1>
 
-<%# div class="flat-index-content">
+<%# <div class="flat-index-content">
   <%= form_with url: viewings_path, method: :get, class: "d-flex" do %>
-<%#     <%= text_field_tag :query,
+    <%# <%=text_field_tag :query,
       params[:query],
       class: "form-control",
-      placeholder: "Enter the appartment name or description"
+      placeholder: "e.g. 65 rue de Groussay"
     %>
-    <%#= submit_tag "Search", class: "btn btn-flat" %>
-  <%#end %><%# </div> %>
+     <%# <%= submit_tag "Search", class: "btn btn-flat" %>
+  <%# <% end %>
+<%# </div>  %>
+
 
   <% @viewings.each do |viewing| %>
     <% if current_user == viewing.user %>
