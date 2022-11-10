@@ -15,9 +15,11 @@
 
   <div class="flat-content">
     <p><%= @flat.description%> </p>
-    <p> <span class="strong">Address: </span> <%= @flat.address %> (<%= @flat.city %>)</p>
-    <p><span class="strong">Rent:</span> <%= @flat.rent %></p>
+    <p><span class="strong">Address: </span> <%= @flat.address %> (<%= @flat.city %>)</p>
+    <p><span class="strong">Number of rooms: </span> <%= @flat.number_of_rooms %> </p>
+    <p><span class="strong">Rent:</span> <%= @currency %><%= @flat.rent %></p>
     <p><span class="strong">Available from</span> <%= @flat.available_from.strftime("%A, %d %B %Y") %> </p>
+    <p><span class="strong">Flat interests: </span> <%= @flat.interests %> </p>
   </div>
 
 <% if !@owner && user_signed_in? %>
@@ -43,7 +45,7 @@
     <%= image_tag 'user-placeholder', class: 'card-owner img',  alt: "image placeholder for user" %>
     <div class="card-owner-infos">
     <h2>This property is owned by <%= @flat.user.first_name %> <%= @flat.user.last_name %></h2>
-    <p><%= @flat.user.first_name %> lives in <%= @flat.city %> and enjoys <%= @flat.user.interests %>.
+    <p><%= @flat.user.first_name %> lives in <%= @flat.city%>.
     </p>
     </div>
 

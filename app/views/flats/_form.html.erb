@@ -5,6 +5,9 @@
   <%= f.input :city %>
   <%= f.input :photo, as: :file %>
   <%= f.input :description %>
+  <%= f.input :number_of_rooms %>
+  <%= f.input :interests %>
+  <%= f.input :currency, label: 'Rent Currency', collection: Flat::CURRENCIES %>
   <%= f.input :rent %>
   <%= f.input :available_from, :order => [:day, :month, :year] %>
   <div style="text-align: center;">
