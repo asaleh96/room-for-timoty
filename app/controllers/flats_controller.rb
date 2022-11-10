@@ -24,6 +24,7 @@ class FlatsController < ApplicationController
   def show
     @flat = Flat.find(params[:id])
     @owner = owner?(@flat)
+    @currency = currency(@flat)
   end
 
   def new
@@ -67,6 +68,17 @@ class FlatsController < ApplicationController
   def owner?(flat)
     if user_signed_in?
     current_user.id == flat.user_id
+    end
+  end
+
+  def currency(flat)
+    case flat.currency
+    when "€ - EUR"
+      "€"
+    when "£ - GBP"
+      "£"
+    else
+      "$"
     end
   end
 end
