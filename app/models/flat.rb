@@ -4,7 +4,7 @@ class Flat < ApplicationRecord
   geocoded_by :full_street_address
   after_validation :geocode, if: :will_save_change_to_address?
   has_one_attached :photo
-
+  CURRENCIES = ["€ - EUR", "£ - GBP", "$ - USD"]
   include PgSearch::Model
 pg_search_scope :search_by_city,
   against: [ :title, :city, :description],
