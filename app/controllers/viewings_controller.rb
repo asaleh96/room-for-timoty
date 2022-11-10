@@ -9,6 +9,16 @@ class ViewingsController < ApplicationController
     @viewing = Viewing.new
   end
 
+  def edit
+    @viewing = Viewing.find(params[:id])
+  end
+
+  def update
+    @viewing = Viewing.find(params[:id])
+    @viewing.update(viewing_params)
+    redirect_to viewings_path
+  end
+
   def create
     @viewing = Viewing.new(viewing_params)
     @viewing.flat = @flat
@@ -24,7 +34,6 @@ class ViewingsController < ApplicationController
   end
 
   private
-
 
   def set_flat
     @flat = Flat.find(params[:flat_id])
