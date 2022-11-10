@@ -24,8 +24,11 @@
     <% @flats.each do |flat| %>
       <%= link_to flat_path(flat) do  %>
         <div class="flat-card-index">
-          <%= image_tag 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80', class: 'image-flat-cover',  alt: "image placeholder for flat" %>
-
+          <% if flat.photos.attached? %>
+            <%= cl_image_tag flat.photos.first.key, height: 200, width: 300, crop: :fill, class: 'image-flat-cover',  alt: "picture of flat" %>
+          <% else %>
+            <%= image_tag 'flat-placeholder', class: 'image-flat-cover',  alt: "image placeholder for flat" %>
+          <% end %>
           <div class="flat-card-content">
             <p><%= flat.title %></p>
             <p><%= flat.rent %> €/pm</p>
