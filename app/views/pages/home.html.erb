@@ -11,8 +11,8 @@
     <% @flats.each do |flat| %>
       <%= link_to flat_path(flat) do  %>
         <div class="flat-card-index">
-          <% if flat.photo.attached? %>
-            <%= cl_image_tag flat.photo.key, height: 200, width: 300, crop: :fill %>
+          <% if flat.photos.attached? %>
+            <%= cl_image_tag flat.photos.first.key, height: 200, width: 300, crop: :fill %>
           <% else %>
             <%= image_tag 'flat-placeholder', class: 'image-flat-cover',  alt: "image placeholder for flat" %>
           <% end %>

@@ -10,4 +10,5 @@ class User < ApplicationRecord
 
   has_many :viewings
   has_many :flats, dependent: :destroy
+  has_one_attached :photo
 end

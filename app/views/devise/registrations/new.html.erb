@@ -21,6 +21,7 @@
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :interests, collection: User::INTERESTS,
                 required: true %>
+    <%= f.input :photo, as: :file, label: "Profile picture" %>
   </div>
 
   <div class="form-actions", style="text-align: center;">
