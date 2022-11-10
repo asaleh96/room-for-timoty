@@ -3,10 +3,15 @@ Rails.application.routes.draw do
   resources :flats do
     resources :viewings, only: [:new, :create]
   end
-  # resources :viewings
 
+    # resources :viewings, only: [:show] do
+    #   patch :accept
+    #   patch :decline
+    # end
   # Defines the root path route ("/")
   root to: 'pages#home'
-  resources :flats
-  resources :viewings
+  resources :viewings, only: [:show, :index, :update, :edit, :destroy] do
+    get :accept
+    get :decline
+  end
 end

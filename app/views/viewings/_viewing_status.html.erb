@@ -1,0 +1,17 @@
+
+<% if @viewing.status = 0 %>
+  <%= link_to 'Accept', viewing_accept_path(viewing.id), class: 'secondary-btn' %>
+  <%= link_to 'Reject', viewing_decline_path(viewing.id), class: 'secondary-btn' %>
+<% elsif @viewing.status = 1 %>
+<%= "This viewing has been accepted" %>
+<% else %>
+<%=  "This viewing has been rejected" %>
+<% end %>
+
+<%#
+# WHen status = 0 (pending)
+ > we want the 2 buttons for accept or Reject
+# When Status = 1 (accepted)
+ > We want to see > Green border the for the viewing + "This viewing has been accepted"
+# When status = 2 (rejected)
+ > We want to see > Red border the for the viewing + "This viewing has been rejected" %>

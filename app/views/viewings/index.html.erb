@@ -1,28 +1,67 @@
 <div class="container" style="width: 70%">
 
-<h1 style="text-align: center; padding: 20px 0;"> My Viewings </h1>
+  <h1 style="text-align: center; padding: 20px 0;"> My Viewings </h1>
 
-<%# <div class="flat-index-content">
-  <%= form_with url: viewings_path, method: :get, class: "d-flex" do %>
-    <%# <%=text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "e.g. 65 rue de Groussay"
-    %>
-     <%# <%= submit_tag "Search", class: "btn btn-flat" %>
-  <%# <% end %>
-<%# </div>  %>
+      <%# <div class="flat-index-content">
+        <%= form_with url: viewings_path, method: :get, class: "d-flex" do %>
+          <%# <%=text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "e.g. 65 rue de Groussay"
+          %>
+          <%# <%= submit_tag "Search", class: "btn btn-flat" %>
+        <%# <% end %>
+      <%# </div>  %>
 
-  <% @viewings.each do |viewing| %>
-    <% if current_user == viewing.user %>
-    <%= link_to flat_path(viewing.flat), class: "flat-link" do  %>
-      <div class="notification">
+  <h2> My flats </h2>
+    <% @viewings.each do |viewing| %>
+      <% if current_user == viewing.flat.user %>
+        <%= link_to flat_path(viewing.flat), class: "flat-link" do  %>
+        <div class="notification">
         <%= image_tag 'flat-placeholder', class: 'rounded-3', style: 'width: 150px;',  alt: "image placeholder for flat" %>
-          <div class="notification-content">
-                  <p style="font-weight: bold;"> <small> <%= viewing.date.strftime("%A, %d %B %Y at %H:%M") %> </small></p>
-                  <p> You are viewing <span style="font-weight:bold;"><%= viewing.flat.title %> </span> </p>
-                  <p><%= viewing.flat.address %>, <%= viewing.flat.city %></p>
-                  <p><%= viewing.user.first_name %> will be meeting you there!</p>
+        <div class="notification-content">
+            <p style="font-weight: bold;"> <small> <%= viewing.date.strftime("%A, %d %B %Y at %H:%M") %> </small></p>
+            <p> You are viewing <span style="font-weight:bold;"><%= viewing.flat.title %> </span> </p>
+            <p><%= viewing.flat.address %>, <%= viewing.flat.city %></p>
+             <p><%= viewing.user.first_name %> will be meeting you there!</p>
+              <% if viewing.status == "pending" %>
+                <%= link_to 'Accept', viewing_accept_path(viewing), class: 'secondary-btn'%>
+                <%= link_to 'Reject', viewing_decline_path(viewing), class: 'secondary-btn' %>
+              <% elsif viewing.status == "accepted" %>
+                <%= "This viewing has been accepted" %>
+              <% elsif viewing.status == "rejected" %>
+                <%=  "This viewing has been rejected" %>
+              <% else %>
+                <%=  "This viewing is pending" %>
+              <% end %>
+        <% end %>
+        </div>
+        </div>
+      <% end %>
+    <% end %>
+
+
+
+  <h2> My viewings </h2>
+  <% @viewings.each do |viewing| %>
+      <% if current_user == viewing.user %>
+        <%= link_to flat_path(viewing.flat), class: "flat-link" do  %>
+          <div class="notification">
+            <%= image_tag 'flat-placeholder', class: 'rounded-3', style: 'width: 150px;',  alt: "image placeholder for flat" %>
+            <div class="notification-content">
+                <p style="font-weight: bold;"> <small> <%= viewing.date.strftime("%A, %d %B %Y at %H:%M") %> </small></p>
+                <p> You are viewing <span style="font-weight:bold;"><%= viewing.flat.title %> </span> </p>
+                <p><%= viewing.flat.address %>, <%= viewing.flat.city %></p>
+                <p><%= viewing.user.first_name %> will be meeting you there!</p>
+
+
+                  <% if viewing.status == "accepted" %>
+                    <%= "This viewing has been accepted" %>
+                  <% elsif viewing.status == "rejected" %>
+                    <%=  "This viewing has been rejected" %>
+                  <% else %>
+                   <%=  "This viewing is pending" %>
+                  <% end %>
           </div>
       </div>
       <% end %>

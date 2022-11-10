@@ -23,6 +23,20 @@ class ViewingsController < ApplicationController
     redirect_to flat_path(@viewing.flat), status: :see_other
   end
 
+  def accept
+    @viewing = Viewing.find(params[:viewing_id])
+    @viewing.status = 1
+    @viewing.save!
+    redirect_to viewings_path
+  end
+
+  def decline
+    @viewing = Viewing.find(params[:viewing_id])
+    @viewing.status = 2
+    @viewing.save!
+    redirect_to viewings_path
+  end
+
   private
 
 
