@@ -1,0 +1,12 @@
+<div style="width: 60%; margin: 20px auto;">
+<%= simple_form_for(@user) do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :interests %>
+  <%= f.input :photo %>
+
+  <div style="text-align: center;">
+  <%= f.submit class: "btn-flat" %>
+  </div>
+<% end %>
+</div>
