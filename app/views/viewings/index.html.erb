@@ -17,26 +17,30 @@
     <% @viewings.each do |viewing| %>
       <% if current_user == viewing.flat.user %>
         <%= link_to flat_path(viewing.flat), class: "flat-link" do  %>
+
         <div class="notification">
         <%= image_tag 'flat-placeholder', class: 'rounded-3', style: 'width: 150px;',  alt: "image placeholder for flat" %>
         <div class="notification-content">
             <p style="font-weight: bold;"> <small> <%= viewing.date.strftime("%A, %d %B %Y at %H:%M") %> </small></p>
-            <p> You are viewing <span style="font-weight:bold;"><%= viewing.flat.title %> </span> </p>
+            <p> <span style="font-weight:bold;"><%= viewing.flat.title %> </span> </p>
             <p><%= viewing.flat.address %>, <%= viewing.flat.city %></p>
-             <p><%= viewing.user.first_name %> will be meeting you there!</p>
-              <% if viewing.status == "pending" %>
-                <%= link_to 'Accept', viewing_accept_path(viewing), class: 'secondary-btn'%>
-                <%= link_to 'Reject', viewing_decline_path(viewing), class: 'secondary-btn' %>
-              <% elsif viewing.status == "accepted" %>
-                <%= "This viewing has been accepted" %>
-              <% elsif viewing.status == "rejected" %>
-                <%=  "This viewing has been rejected" %>
-              <% else %>
-                <%=  "This viewing is pending" %>
-              <% end %>
+             <p><%= viewing.user.first_name %> wrote: "<%= viewing.message %>"</p>
         <% end %>
         </div>
+       <div class="viewing-status">
+                <% if viewing.status == "pending" %>
+                  <%= link_to 'Accept', viewing_accept_path(viewing), class: 'secondary-btn'%>
+                  <%= link_to 'Reject', viewing_decline_path(viewing), class: 'secondary-btn' %>
+                <% elsif viewing.status == "accepted" %>
+                  <%= "Viewing Confirmed" %>
+                <% elsif viewing.status == "rejected" %>
+                  <%=  "Viewing Rejected" %>
+                <% else %>
+                  <%=  "Pending" %>
+                <% end %>
+              </div>
         </div>
+
       <% end %>
     <% end %>
 
@@ -46,28 +50,37 @@
   <% @viewings.each do |viewing| %>
       <% if current_user == viewing.user %>
         <%= link_to flat_path(viewing.flat), class: "flat-link" do  %>
+
           <div class="notification">
             <%= image_tag 'flat-placeholder', class: 'rounded-3', style: 'width: 150px;',  alt: "image placeholder for flat" %>
             <div class="notification-content">
+
                 <p style="font-weight: bold;"> <small> <%= viewing.date.strftime("%A, %d %B %Y at %H:%M") %> </small></p>
                 <p> You are viewing <span style="font-weight:bold;"><%= viewing.flat.title %> </span> </p>
                 <p><%= viewing.flat.address %>, <%= viewing.flat.city %></p>
                 <p><%= viewing.user.first_name %> will be meeting you there!</p>
 
-
                   <% if viewing.status == "accepted" %>
-                    <%= "This viewing has been accepted" %>
+                    <p> <%= "This viewing has been accepted" %><p>
                   <% elsif viewing.status == "rejected" %>
-                    <%=  "This viewing has been rejected" %>
+                   <p> <%=  "This viewing has been rejected" %><p>
                   <% else %>
-                   <%=  "This viewing is pending" %>
+                 <p>  <%=  "This viewing is pending" %><p>
                   <% end %>
+                   <% end %>
+        </div>
+        <div class="notification-actions">
+              <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
+              <a href="#">Delete <i class="far fa-trash-alt"></i></a>
           </div>
-      </div>
+        </div>
+
       <% end %>
-  <% end %>
-  <% end %>
+    <% end %>
+
+
   <div style="text-align: center; padding: 20px;">
     <%= link_to 'Get back to flats', flats_path, class: 'secondary-btn' %>
   </div>
+
 </div>

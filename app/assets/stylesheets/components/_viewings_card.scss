@@ -22,25 +22,25 @@
   color: $pink;
   font-weight: bold;
 }
-.notification .notification-actions {
-  opacity: 0;
-  display: flex;
-  transition: ease .3s;
-}
+// .notification .notification-actions {
+//   opacity: 0;
+//   display: flex;
+//   transition: ease .3s;
+// }
 
 .notification:hover .notification-actions {
   opacity: 1;
 }
 
 .notification .notification-actions a {
-  color: #999999;
+  color: #6c6b6b;;
   margin-left: 16px;
   font-size: 14px;
   text-decoration: none !important;
 }
 
 .notification .notification-actions a:hover {
-  color: #555555;
+  color: #242323;
   text-decoration: none;
 }
 
@@ -52,4 +52,8 @@
 .flat-link:hover {
   text-decoration: none;
   color: black;
+}
+
+.viewing-status {
+
 }
