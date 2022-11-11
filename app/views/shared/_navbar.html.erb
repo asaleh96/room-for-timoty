@@ -22,11 +22,11 @@
             <%= link_to "Post an Ad", new_flat_path, class: "nav-link" %>
           </li>
 
-          <li>
+          <li class='nav-item'>
            <div class="nav-item dropdown show">
               <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <% if current_user.photo.attached? %>
-                  <%= cl_image_tag current_user.photo.key, height: 50, width: 75, gravity: "auto", radius: "max" %>
+                  <%= cl_image_tag current_user.photo.key, class: 'avatar', gravity: "auto", radius: "max" %>
                 <% else %>
                   <%= image_tag 'user-placeholder', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                 <% end %>
