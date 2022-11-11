@@ -30,3 +30,29 @@
     color: white;
     text-decoration: none;
 }
+
+#accept-btn {
+  background-color:  rgb(0, 150, 0);
+  color:white;
+  padding: 8px 24px;
+  border-radius: 5px;
+  text-decoration: none;
+  opacity: 1;
+}
+
+#accept-btn:hover {
+ background-color: darkgreen;
+}
+
+#decline-btn {
+  background-color:  rgb(216, 55, 55);
+  opacity: 1;
+  color:white;
+  padding: 8px 24px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+#decline-btn:hover {
+ background-color: darkred;
+}
