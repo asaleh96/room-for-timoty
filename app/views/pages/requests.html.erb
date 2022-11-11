@@ -1,7 +1,7 @@
 <div class="container show-flat-content" style="width: 70%">
 <div id='My_flats' class="tabcontent">
     <h2 style="text-align: center; padding: 20px;"> My Requests </h2>
-    
+
 
     <% @viewings.each do |viewing| %>
       <% if current_user == viewing.flat.user %>
@@ -10,10 +10,15 @@
 
             <div style="width: 10%; text-align: center;">
                 <% if viewing.user.photo.attached? %>
-                  <%= cl_image_tag viewing.user.photo.key, class:"avatar-lg", width: 50, gravity: "auto", radius: "max" %>
+                <%= link_to user_path(viewing.user_id) do %>
+                  <%= link_to cl_image_tag viewing.user.photo.key, class:"avatar-lg", width: 50, gravity: "auto", radius: "max" %>
+                <% end %>
                 <% else %>
+                <%= link_to user_path(viewing.user) do %>
                   <%= image_tag 'user-placeholder', width: 50, class: "avatar-lg", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                 <% end %>
+                <% end %>
+
             </div>
 
             <div class="notification-content" style='width: 60%'>

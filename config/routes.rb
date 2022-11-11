@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users, only: [:show, :edit, :update]
   resources :flats do
     resources :viewings, only: [:new, :create]
   end
