@@ -1,2 +1,6 @@
-<h2><%= flat.title %></h2>
-<p><%= flat.address %></p>
+<div style="text-align: left;">
+  <h3 style="font-size: 20px;"><%= flat.title %></h3>
+  <p style="margin: 0px;"><%=flat.address%>, <%= flat.city %>
+  <p style="margin: 0px;">Available from <%= flat.available_from.strftime("%A, %d %B %Y") %> </p>
+  <p style="margin: 0px;">Rent: <%= flat.rent %> <%= flat.currency %> </p>
+</div>

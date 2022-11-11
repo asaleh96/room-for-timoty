@@ -3,6 +3,7 @@
   background: white;
   padding: 10px 20px;
   color: #4C5270;
+  right: 0px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -15,4 +16,9 @@
 
 .logo-title {
   font-size: 80%;
+}
+
+.dropdown-menu-right {
+  right: 0;
+  left: auto;
 }

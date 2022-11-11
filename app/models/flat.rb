@@ -13,6 +13,6 @@ pg_search_scope :search_by_city,
   }
 
   def full_street_address
-    self.address + self.city
+    address + " " + city
   end
 end
