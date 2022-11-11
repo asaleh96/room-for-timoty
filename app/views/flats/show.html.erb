@@ -1,4 +1,4 @@
-<div class="container show-flat-content">
+<div class="container show-flat-content" style="width: 70%">
   <h1 style="padding: 10px 0px; text-align: center"><%= "Welcome to #{@flat.title}!" %></h1>
 
 <% if @owner %>
@@ -17,7 +17,7 @@
 
       <% @flat.photos.each_with_index do |photo, index| %>
         <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
-          <%= cl_image_tag photo.key, height: 700, width: 1272, crop: :fill, class: 'd-block w-100',  alt: "picture of flat" %>
+          <%= cl_image_tag photo.key, crop: :fill, class: 'd-block w-100',  alt: "picture of flat" %>
         </div>
       <% end %>
 
@@ -42,7 +42,6 @@
     <p><span class="strong">Number of rooms: </span> <%= @flat.number_of_rooms %> </p>
     <p><span class="strong">Rent:</span> <%= @currency %><%= @flat.rent %></p>
     <p><span class="strong">Available from</span> <%= @flat.available_from.strftime("%A, %d %B %Y") %> </p>
-    <p><span class="strong">Flat interests: </span> <%= @flat.interests %> </p>
   </div>
 
 <% if !@owner && user_signed_in? %>
@@ -65,11 +64,15 @@
 
 <% if user_signed_in? %>
   <div class="owner-details card-owner">
-    <%= image_tag 'user-placeholder', class: 'card-owner img',  alt: "image placeholder for user" %>
-    <div class="card-owner-infos">
+ <% if @flat.user.photo.attached? %>
+                  <%= cl_image_tag @flat.user.photo.key, class:"avatar-lg", width: 50, gravity: "auto", radius: "max" %>
+                <% else %>
+                  <%= image_tag 'user-placeholder', width: 50, class: "avatar-lg", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <% end %>
+                    <div class="card-owner-infos">
     <h2>This property is owned by <%= @flat.user.first_name %> <%= @flat.user.last_name %></h2>
-    <p><%= @flat.user.first_name %> lives in <%= @flat.city%>.
-    </p>
+    <p><%= @flat.user.first_name %> lives in <%= @flat.city%>. </p>
+     <p> <%= @flat.user.first_name %> enjoys <%= @flat.user.interests%>, and their flatmates enjoy <%= @flat.interests %>  </p>
     </div>
 
 

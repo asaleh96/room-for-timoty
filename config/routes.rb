@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     # end
   # Defines the root path route ("/")
   root to: 'pages#home'
+  get '/requests' => 'pages#requests'
   resources :viewings, only: [:show, :index, :update, :edit, :destroy] do
     get :accept
     get :decline
