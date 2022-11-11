@@ -1,6 +1,4 @@
-<div class="container" style="width: 70%">
-
-  <h1 style="text-align: center; padding: 20px 0;"> My Viewings </h1>
+<div class="container" style="width: 70%" >
 
       <%# <div class="flat-index-content">
         <%= form_with url: viewings_path, method: :get, class: "d-flex" do %>
@@ -12,41 +10,76 @@
           <%# <%= submit_tag "Search", class: "btn btn-flat" %>
         <%# <% end %>
       <%# </div>  %>
+<%#
+<ul class="list-inline tabs-underlined">
+  <li>
+    <a href="#"  class="tab-underlined active">My flats</a>
+  </li>
+  <li>
+    <a href="#" class="tab-underlined">Other flats</a>
+  </li>
+</ul> %>
 
-  <h2> My flats </h2>
+  <div id='My_flats' class="tabcontent">
+  <h2 style="text-align: center; padding: 20px;"> My Requests </h2>
     <% @viewings.each do |viewing| %>
       <% if current_user == viewing.flat.user %>
         <%= link_to flat_path(viewing.flat), class: "flat-link" do  %>
 
         <div class="notification">
-        <%= image_tag 'flat-placeholder', class: 'rounded-3', style: 'width: 150px;',  alt: "image placeholder for flat" %>
+         <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <% if viewing.user.photo.attached? %>
+                  <%= cl_image_tag viewing.user.photo.key, width: 50, gravity: "auto", radius: "max" %>
+                <% else %>
+                  <%= image_tag 'user-placeholder', width: 50, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <% end %>
+            </a>
         <div class="notification-content">
             <p style="font-weight: bold;"> <small> <%= viewing.date.strftime("%A, %d %B %Y at %H:%M") %> </small></p>
-            <p> <span style="font-weight:bold;"><%= viewing.flat.title %> </span> </p>
-            <p><%= viewing.flat.address %>, <%= viewing.flat.city %></p>
-             <p><%= viewing.user.first_name %> wrote: "<%= viewing.message %>"</p>
+            <p> <span style="font-weight:bold;"><%= viewing.user.first_name %></span>   would like to see <span style="font-weight:bold;">  <%= link_to viewing.flat.title, flat_path(viewing.flat), style: 'text-decoration: none; color: black;'%> </span>. </p>
+             <p>"<%= viewing.message %>"</p>
         <% end %>
         </div>
        <div class="viewing-status">
+
+
                 <% if viewing.status == "pending" %>
-                  <%= link_to 'Accept', viewing_accept_path(viewing), class: 'secondary-btn'%>
-                  <%= link_to 'Reject', viewing_decline_path(viewing), class: 'secondary-btn' %>
+                <%= link_to viewing_accept_path(viewing)  do %>
+                <p> Accept<i class="fa-solid fa-circle-check"></i></p>
+                <% end %>
+                <%= link_to viewing_decline_path(viewing) do %>
+                <p> Decline<i class="fa-solid fa-circle-xmark"></i></p>
+                <% end %>
+
                 <% elsif viewing.status == "accepted" %>
-                  <%= "Viewing Confirmed" %>
+                <div style="text-align: center;", class="">
+                <p><i class="fa-solid fa-circle-check"></i> </p>
+                 <p class="" style= "text-align: center;"> <%= "Confirmed" %></p>
+                 </div>
+
+
                 <% elsif viewing.status == "rejected" %>
-                  <%=  "Viewing Rejected" %>
+                <div style="text-align: center;", class="">
+                <p><i class="fa-solid fa-circle-xmark"></i></p>
+                 <p><%=  "Declined" %></p>
+                </div>
+
                 <% else %>
-                  <%=  "Pending" %>
+                  <div style="text-align: center;", class="">
+                <p><i class="fa-solid fa-circle-question"></i>"></i></p>
+                 <p><%=  "Pending" %></p>
+                </div>
                 <% end %>
               </div>
         </div>
 
       <% end %>
     <% end %>
+  </div>
 
 
-
-  <h2> My viewings </h2>
+  <div id="My_viewings" class="tabcontent">
+  <h2 style="text-align: center; padding: 30px 0 30px 0;"> My Viewings </h2>
   <% @viewings.each do |viewing| %>
       <% if current_user == viewing.user %>
         <%= link_to flat_path(viewing.flat), class: "flat-link" do  %>
@@ -56,9 +89,9 @@
             <div class="notification-content">
 
                 <p style="font-weight: bold;"> <small> <%= viewing.date.strftime("%A, %d %B %Y at %H:%M") %> </small></p>
-                <p> You are viewing <span style="font-weight:bold;"><%= viewing.flat.title %> </span> </p>
+                <p> Your request for <span style="font-weight:bold;"><%= viewing.flat.title %> </span> </p>
                 <p><%= viewing.flat.address %>, <%= viewing.flat.city %></p>
-                <p><%= viewing.user.first_name %> will be meeting you there!</p>
+
 
                   <% if viewing.status == "accepted" %>
                     <p> <%= "This viewing has been accepted" %><p>
@@ -77,7 +110,7 @@
 
       <% end %>
     <% end %>
-
+</div>
 
   <div style="text-align: center; padding: 20px;">
     <%= link_to 'Get back to flats', flats_path, class: 'secondary-btn' %>
