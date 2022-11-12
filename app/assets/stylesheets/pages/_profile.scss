@@ -1,0 +1,97 @@
+.profile-a {
+  text-decoration: none;
+  color: #697184;
+}
+
+
+
+.first-card {
+  background-color: rgb(243, 243, 243);
+  box-shadow: 2px 2px 3px #B1A6A4;
+  border-radius: 20px;
+  margin: 7% auto 2% auto;
+  text-align: center;
+  padding-bottom: 8%;
+  padding-top: 4%;
+  height: 100%;
+}
+
+
+.profile-h1 {
+  color: #1d1c22;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.profile-h2 {
+  font-family: 'Rubik', sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+  color: #575363;
+}
+
+.profile-hr {
+  width: 5%;
+    border-style: dotted none none;
+    border-width: 7px;
+    border-color: lightgray;
+    padding: 20px;
+}
+
+
+.profile-li {
+  display: inline-block;
+}
+
+.skill-text {
+  color: #575363;
+}
+
+.single-skill {
+  display: block;
+}
+
+.skills-icon {
+  font-size: 40px;
+  text-align: center;
+  color: #1d1c22;
+  padding-bottom: 10px;
+}
+
+.skills-icon:hover{
+  color: #1b5f89;
+}
+
+.social {
+  color: whitesmoke;
+  background-color: #C4A484;
+  box-shadow: 2px 2px 3px #B1A6A4;
+  border-radius: 5px;
+  font-size: 30px;
+  text-align: center;
+  padding: 10px;
+}
+
+.social:hover {
+  background-color: #5a4c3d;
+}
+
+.subtitle {
+  padding: 0px 10px 10px 10px;
+}
+
+.subtitle-symbol {
+  padding: 0 5px;
+}
+
+.skills-ul {
+  padding: 10px;
+  margin: 10px 45px 10px 0px;
+  text-align: center;
+}
+
+.profile-ul {
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+}

@@ -1,6 +1,4 @@
-<div class="container" style="width: 70%">
-
-  <h1 style="text-align: center; padding: 20px 0;"> My Viewings </h1>
+<div class="container" style="width: 70%" >
 
       <%# <div class="flat-index-content">
         <%= form_with url: viewings_path, method: :get, class: "d-flex" do %>
@@ -13,71 +11,44 @@
         <%# <% end %>
       <%# </div>  %>
 
-  <h2> My flats </h2>
-    <% @viewings.each do |viewing| %>
-      <% if current_user == viewing.flat.user %>
-        <%= link_to flat_path(viewing.flat), class: "flat-link" do  %>
 
-        <div class="notification">
-        <%= image_tag 'flat-placeholder', class: 'rounded-3', style: 'width: 150px;',  alt: "image placeholder for flat" %>
-        <div class="notification-content">
-            <p style="font-weight: bold;"> <small> <%= viewing.date.strftime("%A, %d %B %Y at %H:%M") %> </small></p>
-            <p> <span style="font-weight:bold;"><%= viewing.flat.title %> </span> </p>
-            <p><%= viewing.flat.address %>, <%= viewing.flat.city %></p>
-             <p><%= viewing.user.first_name %> wrote: "<%= viewing.message %>"</p>
-        <% end %>
-        </div>
-       <div class="viewing-status">
-                <% if viewing.status == "pending" %>
-                  <%= link_to 'Accept', viewing_accept_path(viewing), class: 'secondary-btn'%>
-                  <%= link_to 'Reject', viewing_decline_path(viewing), class: 'secondary-btn' %>
-                <% elsif viewing.status == "accepted" %>
-                  <%= "Viewing Confirmed" %>
-                <% elsif viewing.status == "rejected" %>
-                  <%=  "Viewing Rejected" %>
-                <% else %>
-                  <%=  "Pending" %>
-                <% end %>
-              </div>
-        </div>
-
-      <% end %>
-    <% end %>
-
-
-
-  <h2> My viewings </h2>
+  <h2 style="text-align: center; padding: 30px 0 30px 0;"> My Viewings </h2>
   <% @viewings.each do |viewing| %>
       <% if current_user == viewing.user %>
         <%= link_to flat_path(viewing.flat), class: "flat-link" do  %>
 
           <div class="notification">
-            <%= image_tag 'flat-placeholder', class: 'rounded-3', style: 'width: 150px;',  alt: "image placeholder for flat" %>
-            <div class="notification-content">
+              <div style="width: 20%; text-align: center;">
+                <%= image_tag 'flat-placeholder', class: 'rounded-3', style: 'width: 150px;',  alt: "image placeholder for flat" %>
+              </div>
 
-                <p style="font-weight: bold;"> <small> <%= viewing.date.strftime("%A, %d %B %Y at %H:%M") %> </small></p>
-                <p> You are viewing <span style="font-weight:bold;"><%= viewing.flat.title %> </span> </p>
-                <p><%= viewing.flat.address %>, <%= viewing.flat.city %></p>
-                <p><%= viewing.user.first_name %> will be meeting you there!</p>
+
+              <div class="notification-content">
+
+                  <p style="font-weight: bold;"> <small> <%= viewing.date.strftime("%A, %d %B %Y at %H:%M") %> </small></p>
+                  <p> Your requested a viewing for <span style="font-weight:bold;"><%= viewing.flat.title %> </span> </p>
+                  <p><%= viewing.flat.address %>, <%= viewing.flat.city %></p>
+                  <br>
+
+
 
                   <% if viewing.status == "accepted" %>
-                    <p> <%= "This viewing has been accepted" %><p>
+                    <p style="font-weight: bold;"> 🥳 Your viewing request has been accepted. </p>
                   <% elsif viewing.status == "rejected" %>
-                   <p> <%=  "This viewing has been rejected" %><p>
+                   <p style="font-weight: bold;"> 😪 Your viewing request has been rejected. <p>
                   <% else %>
-                 <p>  <%=  "This viewing is pending" %><p>
+                 <p style="font-weight: bold;">  ⏳ This viewing request is pending! <p>
                   <% end %>
                    <% end %>
         </div>
-        <div class="notification-actions">
-              <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
-              <a href="#">Delete <i class="far fa-trash-alt"></i></a>
-          </div>
+        <div style="width: 20%";>
+          <%= link_to 'Edit',  edit_viewing_path(viewing), class: 'secondary-btn'%>
+        </div>
         </div>
 
       <% end %>
     <% end %>
-
+</div>
 
   <div style="text-align: center; padding: 20px;">
     <%= link_to 'Get back to flats', flats_path, class: 'secondary-btn' %>

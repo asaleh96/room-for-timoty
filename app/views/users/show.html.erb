@@ -1,0 +1,31 @@
+<div class="container" style="width: 60%; margin: 20px auto;" >
+
+
+    <div class="container">
+    <div class="first-card">
+    <h1 class="profile-h1"> Hello, I'm <%= @user.first_name%>!</h1>
+       <% if current_user.photo.attached? %>
+                  <%= cl_image_tag current_user.photo.key, class: 'rounded-circle', style: 'width: 150px', gravity: "auto", radius: "max" %>
+                <% else %>
+                  <%= image_tag 'user-placeholder', class: 'rounded-circle', style: 'width: 150px', id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <% end %>
+                <ul class="profile-ul">
+          <li class="subtitle profile-li"> <i class="subtitle-symbol fa-sharp fa-solid fa-briefcase"></i> Add if Student / Worker </li>
+          <li class="subtitle profile-li"><i class="subtitle-symbol fa-solid fa-location-dot"></i> Add from where</li>
+        </h2>
+        <p> Add description field </p>
+      </ul>
+
+
+
+
+
+  </div>
+  </div>
+
+<div style="text-align: center; padding: 20px;">
+    <%= link_to 'Back to Flats', flats_path, class: 'secondary-btn' %>
+    <%= link_to 'Back to Viewings', viewings_path, class: 'secondary-btn' %>
+  </div>
+
+</div>

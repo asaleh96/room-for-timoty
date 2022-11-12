@@ -1,0 +1,66 @@
+<div class="container show-flat-content" style="width: 70%">
+<div id='My_flats' class="tabcontent">
+    <h2 style="text-align: center; padding: 20px;"> My Requests </h2>
+
+
+    <% @viewings.each do |viewing| %>
+      <% if current_user == viewing.flat.user %>
+
+          <div class="notification">
+
+            <div style="width: 10%; text-align: center;">
+                <% if viewing.user.photo.attached? %>
+                <%= link_to user_path(viewing.user_id) do %>
+                  <%= link_to cl_image_tag viewing.user.photo.key, class:"avatar-lg", width: 50, gravity: "auto", radius: "max" %>
+                <% end %>
+                <% else %>
+                <%= link_to user_path(viewing.user) do %>
+                  <%= image_tag 'user-placeholder', width: 50, class: "avatar-lg", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <% end %>
+                <% end %>
+
+            </div>
+
+            <div class="notification-content" style='width: 60%'>
+                <p style="font-weight: bold;"> <small> <%= viewing.date.strftime("%A, %d %B %Y at %H:%M") %> </small></p>
+                <p> <span style="font-weight:bold;"><%= viewing.user.first_name %></span>   would like to see <span style="font-weight:bold;">  <%= link_to viewing.flat.title, flat_path(viewing.flat), style: 'text-decoration: none; color: black;'%> </span>. </p>
+                <p>"<%= viewing.message %>"</p>
+            </div>
+
+            <div style="width: 30%">
+                <% if viewing.status == "pending" %>
+                  <%= link_to 'Accept', viewing_accept_path(viewing), class: 'accept-btn' %>
+                  <%= link_to 'Decline', viewing_decline_path(viewing), class: 'decline-btn'  %>
+
+
+                <% elsif viewing.status == "accepted" %>
+                  <div style="text-align: center;", class="">
+                    <p><i class="fa-solid fa-circle-check"></i> </p>
+                    <p class="" style= "text-align: center;"> <%= "Confirmed" %></p>
+                  </div>
+
+
+                <% elsif viewing.status == "rejected" %>
+                  <div style="text-align: center;", class="">
+                    <p><i class="fa-solid fa-circle-xmark"></i></p>
+                    <p><%=  "Declined" %></p>
+                  </div>
+
+                <% else %>
+                  <div style="text-align: center;", class="">
+                    <p><i class="fa-solid fa-circle-question"></i>"></i></p>
+                    <p><%=  "Pending" %></p>
+                  </div>
+                <% end %>
+
+              </div>
+
+        </div>
+
+      <% end %>
+    <% end %>
+  </div>
+    <div style="text-align: center; padding: 20px;">
+    <%= link_to 'Get back to flats', flats_path, class: 'secondary-btn' %>
+  </div>
+</div>
