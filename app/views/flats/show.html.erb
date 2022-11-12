@@ -46,15 +46,15 @@
 
 <% if !@owner && user_signed_in? %>
   <div style="text-align: center; padding: 20px;">
-    <%= link_to "Book a viewing", new_flat_viewing_path(@flat), class: 'btn btn-flat' %>
+    <%= link_to "Book a viewing", new_flat_viewing_path(@flat), class: 'btn-flat' %>
   </div>
 
 <% elsif !@owner %>
 <div style="text-align: center; padding: 40px;">
   Sign up for free or login to book a viewing
   <div style= "padding: 20px;">
-    <%= link_to "Sign up for Free", new_user_registration_path, class: "btn btn-flat" %>
-    <%= link_to "Login", user_session_path, class: 'btn btn-flat' %>
+    <%= link_to "Sign up for Free", new_user_registration_path, class: "btn-flat" %>
+    <%= link_to "Login", user_session_path, class: 'btn-flat' %>
     </div>
     <div style= "padding: 20px; ">
     <%= link_to 'Get back to flats', flats_path, class: 'secondary-btn'%>
