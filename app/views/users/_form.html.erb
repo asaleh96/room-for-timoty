@@ -2,6 +2,9 @@
 <%= simple_form_for(@user) do |f| %>
   <%= f.input :first_name %>
   <%= f.input :last_name %>
+  <%= f.input :city %>
+  <%= f.input :occupation %>
+  <%= f.input :bio, label: 'Profile', as: :text, :input_html => { :cols => 5, :rows => 5 }, placeholder: 'Tell more about yourself..' %>
   <%= f.input :interests %>
   <%= f.input :photo %>
 
