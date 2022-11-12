@@ -31,7 +31,7 @@
                 <% if current_user.photo.attached? %>
                   <%= cl_image_tag current_user.photo.key, class: 'avatar', gravity: "auto", radius: "max" %>
                 <% else %>
-                  <%= image_tag 'user-placeholder', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                  <%= image_tag 'user-placeholder.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                 <% end %>
             </a>
 

@@ -14,11 +14,11 @@
           <% if flat.photos.attached? %>
             <%= cl_image_tag flat.photos.first.key, height: 200, width: 300, crop: :fill %>
           <% else %>
-            <%= image_tag 'flat-placeholder', class: 'image-flat-cover',  alt: "image placeholder for flat" %>
+            <%= image_tag 'flat-placeholder.jpg', class: 'image-flat-cover',  alt: "image placeholder for flat" %>
           <% end %>
           <div class="flat-card-content">
             <p><%= flat.title %></p>
-            <p><%= flat.rent %> €/pm</p>
+            <p><%= flat.currency.nil? ? flat.currency : flat.currency[0] %><%= flat.rent %></p>
 
           </div>
         </div>
