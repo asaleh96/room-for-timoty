@@ -11,9 +11,11 @@
   </div>
 <% end %>
 
-<% if @flat.photos.attached? %>
-  <div id="FlatCarousel" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
+
+
+
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
 
       <% @flat.photos.each_with_index do |photo, index| %>
         <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
@@ -21,19 +23,17 @@
         </div>
       <% end %>
 
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="FlatCarousel" data-bs-slide="prev">
-       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-       <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="FlatCarousel" data-bs-slide="next">
-       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
   </div>
-<% else %>
-  <%= image_tag 'flat-placeholder', class: 'image-flat',  alt: "image placeholder for flat" %>
-<% end %>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
 
 
   <div class="flat-content">
@@ -67,7 +67,7 @@
  <% if @flat.user.photo.attached? %>
                   <%= cl_image_tag @flat.user.photo.key, class:"avatar-lg", width: 50, gravity: "auto", radius: "max" %>
                 <% else %>
-                  <%= image_tag 'user-placeholder', width: 50, class: "avatar-lg", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                  <%= image_tag 'user-placeholder.png', width: 50, class: "avatar-lg", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                 <% end %>
                     <div class="card-owner-infos">
     <h2>This property is owned by <%= @flat.user.first_name %> <%= @flat.user.last_name %></h2>
