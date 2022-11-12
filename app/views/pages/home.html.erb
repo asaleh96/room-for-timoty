@@ -18,7 +18,7 @@
           <% end %>
           <div class="flat-card-content">
             <p><%= flat.title %></p>
-            <p><%= flat.rent %> €/pm</p>
+            <p><%= flat.currency.nil? ? flat.currency : flat.currency[0] %><%= flat.rent %></p>
 
           </div>
         </div>
